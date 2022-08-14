@@ -22,17 +22,21 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  Person.create([{name:"ZawMinTun",age:27,favoriteFoods:["Pizza","Beef Burger"]},
-                 {name:"ZawMinTun",age:27,favoriteFoods:["Pizza","Beef Burger"]}])
-  done(err, data);
-};
+  Person.create(arrayOfPeople, (err, data)=>{
+  done(err, data)
+  })
+}
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
-};
+  Person.find({name:personName}, (err, data)=>{
+  done(err, data)
+  })
+}
 
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.findOne({favoriteFoods: food}, (err, data)=>{
+    done(err, data)
+  })
 };
 
 const findPersonById = (personId, done) => {
